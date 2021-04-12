@@ -16,6 +16,7 @@
       placeholder="password"
       />
       <br>
+      <div  class="error" v-html="error"/>
       <button
       @click="register">
       Register</button>
@@ -28,7 +29,8 @@ export default {
   data() {
     return {
         email: '',
-        password: ''
+        password: '',
+        error: null
     };
   },
   methods:{
@@ -42,8 +44,8 @@ export default {
           })
           console.log(response.data);
           }
-          catch(e){
-              console.log(e);
+          catch(error){
+              this.error = error.response.data.error;
           }
       }
 
@@ -52,5 +54,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.error{ 
+  color : red;
+}
 </style>
