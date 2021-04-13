@@ -10,5 +10,8 @@ module.exports ={
             storage: './certekium.sqlite'
 
         }
+    },
+    authentification: {
+        jwtSecret: process.env.JWT_SECRET || 'secret'
     }
 }
