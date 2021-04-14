@@ -1,25 +1,18 @@
 <template>
-  <v-app>
-    <v-card class="mx-auto" width="374">
-      <v-card-title class="cyan">Login</v-card-title>
+<panel title="Login">
       <v-card-text>
         <v-text-field name="email" label="Email" v-model="email"></v-text-field>
-        <v-text-field
-          name="password"
-          type="password"
-          label="Password"
-          v-model="password"
-        ></v-text-field>
+        <v-text-field name="password" type="password" label="Password" v-model="password" ></v-text-field>
         <div class="error2" v-html="error" />
         <br />
-        <v-btn class="cyan" @click="login"> Login</v-btn>
+        <v-btn class="cyan" @click="login({ name: 'root' })"> Login</v-btn>
       </v-card-text>
-    </v-card>
-  </v-app>
+</panel>
 </template>
 
 <script>
-import AuthentificationService from "@/services/AuthentificationService";
+import AuthentificationService from "@/services/AuthentificationService"
+import Panel from '@/components/Panel'
 export default {
   data() {
     return {
@@ -30,7 +23,7 @@ export default {
   },
   methods: {
     // ne pas oublier le catch and try sinon message d'erreur
-    async login() {
+    async login(route) {
       try {
         const response = await AuthentificationService.login({
           email: this.email,
@@ -38,16 +31,17 @@ export default {
         });
         this.$store.dispatch("setToken", response.data.token);
         this.$store.dispatch("setUser", response.data.token);
+        this.$router.push(route);
       } catch (error) {
         this.error = error.response.data.error;
       }
     },
   },
+  components:{
+    Panel
+  }
 };
 </script>
 
 <style scoped>
-.error2 {
-  color: red;
-}
 </style>

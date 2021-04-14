@@ -12,13 +12,27 @@
       </v-avatar>
       <span class="home" @click="navigateTo({ name: 'root' })">CERT Ekium</span>
     </v-toolbar-title>
+    <v-toolbar-items>
+      <v-btn  text dark router to="/vulnerabilities">
+        Vulnerabilities
+      </v-btn>
+    </v-toolbar-items>
     <v-spacer></v-spacer>
     <v-toolbar-items>
-      <v-btn v-if="!$store.state.isUserLoggedIn" text dark router to="register">
+      <v-btn v-if="!$store.state.isUserLoggedIn" text dark router to="/login">
+        Login
+      </v-btn>
+      <v-btn v-if="!$store.state.isUserLoggedIn" text dark router to="/register">
         Sign Up
       </v-btn>
-      <v-btn v-if="!$store.state.isUserLoggedIn" text dark router to="login">
-        LOGIN
+      <v-btn
+        v-if="$store.state.isUserLoggedIn"
+        text
+        dark
+        router
+        @click="logout"
+      >
+        Log out
       </v-btn>
     </v-toolbar-items>
   </v-app-bar>
@@ -30,6 +44,11 @@ export default {
   methods: {
     navigateTo(route) {
       this.$router.push(route);
+    },
+    logout() {
+      this.$store.dispatch("setToken", null);
+      this.$store.dispatch("setUser", null);
+      this.$router.push({ name: "root" });
     },
   },
 };
