@@ -2,7 +2,7 @@
   <panel title="Vulnerabilities">
       <v-btn class="cyan accent-2"
    slot="action"
-   router to="/vulnerabilities/add"
+   router to="/vulnerability/add"
         light
         medium
         absolute
@@ -23,9 +23,10 @@
                 <div class="song-title">
  {{ vulne.title }}
                 </div>
-                <v-btn dark class="cyan" @click="navigateTo({name: 'vulnerability', params: {vulnerabilityId: vulne.id}})">
+                <v-btn dark class="cyan" :to="{ name: 'vulnerabilityId', params: { vulnerabilityId: vulne.id}}">
 More
                 </v-btn>
+                <v-btn dark class="cyan" :to="{ name: 'vulnerabilityEdit', params:{vulnerabilityId: vulne.id}}">Edit</v-btn>
             </v-flex>
         </v-layout>
      
@@ -49,11 +50,6 @@ export default {
       this.vulnerabilities = (await VulnerabilitiesService.index()).data
 
   },
-  methods:{
-      navigateTo(route){
-          this.$router.push(route)
-      }
-  }
 };
 </script>
 

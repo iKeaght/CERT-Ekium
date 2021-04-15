@@ -12,6 +12,15 @@ module.exports = (app) => {
     app.get('/vulnerabilities', 
     VulnerabilitiesController.index)
 
+    //view particular vulnerability
+    app.get('/vulnerabilities/:vulnerabilityId', 
+    VulnerabilitiesController.show)
+
     app.post('/vulnerabilities', 
     VulnerabilitiesController.post)
+    
+
+    //edit a particular vulnerability
+    app.put('/vulnerabilities/:vulnerabilityId', 
+    VulnerabilitiesController.put)
 }

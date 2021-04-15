@@ -5,7 +5,7 @@
         <v-text-field name="password" type="password" label="Password" v-model="password" ></v-text-field>
         <div class="error2" v-html="error" />
         <br />
-        <v-btn class="cyan" @click="login({ name: 'root' })"> Login</v-btn>
+        <v-btn class="cyan" @click="login"> Login</v-btn>
       </v-card-text>
 </panel>
 </template>
@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     // ne pas oublier le catch and try sinon message d'erreur
-    async login(route) {
+    async login(rote) {
       try {
         const response = await AuthentificationService.login({
           email: this.email,
@@ -31,7 +31,10 @@ export default {
         });
         this.$store.dispatch("setToken", response.data.token);
         this.$store.dispatch("setUser", response.data.token);
-        this.$router.push(route);
+        this.$router.push({
+          name:'vulnerabilities'
+        })
+
       } catch (error) {
         this.error = error.response.data.error;
       }

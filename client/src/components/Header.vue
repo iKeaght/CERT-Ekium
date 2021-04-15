@@ -10,11 +10,17 @@
           max-width="40"
         />
       </v-avatar>
-      <span class="home" @click="navigateTo({ name: 'root' })">CERT Ekium</span>
+      <span class="home">CERT Ekium</span>
     </v-toolbar-title>
     <v-toolbar-items>
       <v-btn  text dark router to="/vulnerabilities">
         Vulnerabilities
+      </v-btn>
+      <v-btn  text dark router to="/search">
+        Search
+      </v-btn>
+      <v-btn  text dark router to="/about">
+        About
       </v-btn>
     </v-toolbar-items>
     <v-spacer></v-spacer>
@@ -41,14 +47,13 @@
 <script>
 export default {
   name: "Header",
-  methods: {
-    navigateTo(route) {
-      this.$router.push(route);
-    },
+  methods:{
     logout() {
       this.$store.dispatch("setToken", null);
       this.$store.dispatch("setUser", null);
-      this.$router.push({ name: "root" });
+      this.$router.push({
+          name:'vulnerabilities'
+        })
     },
   },
 };
@@ -56,9 +61,7 @@ export default {
 
 <style scoped>
 .home {
-  cursor: pointer;
+  cursor: auto;
 }
-.home:hover {
-  color: rgb(238, 208, 153);
-}
+
 </style>

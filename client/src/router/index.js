@@ -1,20 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
 import Vulnerabilities from '@/components/Vulnerabilities'
 import CreateVulnerability from '@/components/CreateVulnerability'
+import EditVulnerability from '@/components/EditVulnerability'
 import ViewVulnerability from '@/components/ViewVulnerability'
+import About from '@/components/About'
+import Search from '@/components/Search'
 Vue.use(Router)
 
 export default new Router({
   routes: [
-    {
-      path: '/',
-      name: 'root',
-      component: HelloWorld
-    },
     {
       path: '/register',
       name: 'register',
@@ -32,13 +29,33 @@ export default new Router({
     },
     {
       path: '/vulnerabilities/:vulnerabilityId',
-      name: 'vulnerability',
+      name: 'vulnerabilityId',
       component: ViewVulnerability
     },
     {
-      path: '/vulnerabilities/add',
-      name: 'vulnerabilitiesadd',
+      path: '/vulnerability/add',
+      name: 'vulnerabilitiesAdd',
       component: CreateVulnerability
+    },
+    {
+      path: '/vulnerability/:vulnerabilityId/edit',
+      name: 'vulnerabilityEdit',
+      component: EditVulnerability
+    },
+    {
+      path: '*',
+      redirect: 'vulnerabilities'
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: About
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: Search
     }
+   
   ]
 })
