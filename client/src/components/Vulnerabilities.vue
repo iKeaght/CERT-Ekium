@@ -1,41 +1,66 @@
 <template>
   <panel title="Vulnerabilities">
-      <v-btn class="cyan accent-2"
-   slot="action"
-   router to="/vulnerability/add"
-        light
-        medium
-        absolute
-        right
-        middle
-        fab>
-        <v-icon
-        >add</v-icon>
-      </v-btn>
-    <div v-for="vulne in vulnerabilities" :key="vulne.id" class="black--text">
-        <v-layout>
-            <v-flex xs6>
-                <div class="song-index">
- Vulnerability n°{{ vulne.id }} :
-                </div>
-            </v-flex>
-            <v-flex xs6>
-                <div class="song-title">
- {{ vulne.title }}
-                </div>
-                <v-btn dark class="cyan" :to="{ name: 'vulnerabilityId', params: { vulnerabilityId: vulne.id}}">
-More
-                </v-btn>
-                <v-btn dark class="cyan" :to="{ name: 'vulnerabilityEdit', params:{vulnerabilityId: vulne.id}}">Edit</v-btn>
-            </v-flex>
-        </v-layout>
-     
-    </div>
+    <v-btn
+      class="cyan accent-2"
+      slot="action"
+      router
+      to="/vulnerability/add"
+      light
+      medium
+      absolute
+      right
+      middle
+      fab
+    >
+      <v-icon>add</v-icon>
+    </v-btn>
+<v-simple-table fixed-header height="600px" width="5000px">
+  <template v-slot:default>
+    <thead>
+      <tr>
+        <th class="text-left text-center">n°</th>
+        <th class="text-left text-center">Name</th>
+        <th class="text-left text-center">View</th>
+        <th class="text-right text-center">Edit</th>
+        <th class="text-right text-center">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  v-for="vulne in vulnerabilities" :key="vulne.id" class="black--text">
+        <td>{{ vulne.id }}</td>
+        <td>{{ vulne.title }}</td>
+        <td> <v-btn
+            dark
+            class="cyan"
+            :to="{
+              name: 'vulnerabilityId',
+              params: { vulnerabilityId: vulne.id },
+            }"
+          ><v-icon color="black">remove_red_eye</v-icon>
+           </v-btn></td>
+          <td><v-btn
+            dark
+            class="cyan"
+            :to="{
+              name: 'vulnerabilityEdit',
+              params: { vulnerabilityId: vulne.id },
+            }"
+            ><v-icon color="black">edit</v-icon></v-btn
+          ></td>
+          <td><v-btn
+            dark
+            class="cyan"
+            ><v-icon color="black">delete</v-icon></v-btn
+          ></td>
+      </tr>
+    </tbody>
+  </template>
+</v-simple-table>
   </panel>
 </template>
 
 <script>
-import VulnerabilitiesService from '@/services/VulnerabilitiesService'
+import VulnerabilitiesService from "@/services/VulnerabilitiesService";
 import Panel from "@/components/Panel";
 export default {
   components: {
@@ -46,9 +71,8 @@ export default {
       vulnerabilities: [],
     };
   },
-  async mounted(){
-      this.vulnerabilities = (await VulnerabilitiesService.index()).data
-
+  async mounted() {
+    this.vulnerabilities = (await VulnerabilitiesService.index()).data;
   },
 };
 </script>

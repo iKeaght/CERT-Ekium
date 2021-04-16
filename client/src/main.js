@@ -7,9 +7,11 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import {sync} from 'vuex-router-sync'
 import store from '@/store/store'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 Vue.config.productionTip = false
 
-Vue.use(Vuetify)
+Vue.use(Vuetify, VueAxios, axios)
 sync(store, router)
 /* eslint-disable no-new */
 new Vue({

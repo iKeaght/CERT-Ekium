@@ -3,7 +3,7 @@ module.exports = {
     async index(req, res) {
         try {
             const vulnerabilities = await Vulnerability.findAll({
-                limit: 10
+            
             })
             res.send(vulnerabilities)
         } catch (err) {
