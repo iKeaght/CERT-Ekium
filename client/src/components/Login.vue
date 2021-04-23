@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     // ne pas oublier le catch and try sinon message d'erreur
-    async login(rote) {
+    async login() {
       try {
         const response = await AuthentificationService.login({
           email: this.email,
@@ -32,7 +32,8 @@ export default {
         this.$store.dispatch("setToken", response.data.token);
         this.$store.dispatch("setUser", response.data.token);
         this.$router.push({
-          name:'vulnerabilities'
+          name:'vulnerabilities',
+          
         })
 
       } catch (error) {

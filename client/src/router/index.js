@@ -8,6 +8,7 @@ import EditVulnerability from '@/components/EditVulnerability'
 import ViewVulnerability from '@/components/ViewVulnerability'
 import About from '@/components/About'
 import Search from '@/components/Search'
+import DeleteVulnerability from '@/components/DeleteVulnerability'
 Vue.use(Router)
 
 export default new Router({
@@ -42,9 +43,18 @@ export default new Router({
       name: 'vulnerabilityEdit',
       component: EditVulnerability
     },
+    { 
+
+            path: '/vulnerability/:vulnerabilityId/delete', 
+      
+            name: 'vulnerabilityDelete', 
+      
+            component: DeleteVulnerability 
+      
+          }, 
     {
       path: '*',
-      redirect: 'vulnerabilities'
+      redirect: 'about'
     },
     {
       path: '/about',

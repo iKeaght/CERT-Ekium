@@ -14,7 +14,7 @@ app.use(cors())
 
 require('./routes')(app)
 
-sequelize.sync()
+sequelize.sync()//{force: true} pour tout delete
 .then(()=>{
     app.listen(config.port)
     console.log(`server started on port ${config.port}`)

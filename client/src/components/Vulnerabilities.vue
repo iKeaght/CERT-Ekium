@@ -72,7 +72,13 @@ export default {
     };
   },
   async mounted() {
-    this.vulnerabilities = (await VulnerabilitiesService.index()).data;
+    
+    try{
+    this.vulnerabilities = (await VulnerabilitiesService.index({
+    })).data;
+    }catch(err){
+      console.log(err)
+    }
   },
 };
 </script>

@@ -1,8 +1,10 @@
 import Api from '@/services/Api'
 
 export default {
-    index() {
-        return Api().get('vulnerabilities')
+    index({vulnerability}) {
+        return Api().get('vulnerabilities',{
+            params: vulnerability
+        })
     },
     post(vulnerability) {
         return Api().post('vulnerabilities', vulnerability)
@@ -13,4 +15,7 @@ export default {
     put(vulnerability) {
         return Api().put(`vulnerabilities/${vulnerability.id}`, vulnerability)
     },
+    // delete (vulnerabilityId){
+    //     return Api.get(`vulnerabilities/${vulnerabilityId}`)
+    // }
 }
