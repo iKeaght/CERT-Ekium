@@ -13,15 +13,15 @@
 </template>
 
 <script>
-import AuthentificationService from "@/services/AuthentificationService"
+import AuthentificationService from '@/services/AuthentificationService'
 import Panel from '@/components/Panel'
 export default {
   data() {
     return {
-      email: "",
-      password: "",
-      error: null,
-    };
+      email: '',
+      password: '',
+      error: null
+    }
   },
   methods: {
     // ne pas oublier le catch and try sinon message d'erreur
@@ -29,26 +29,23 @@ export default {
       try {
         const response = await AuthentificationService.register({
           email: this.email,
-          password: this.password,
-        });
-        this.$store.dispatch("setToken", response.data.token);
-        this.$store.dispatch("setUser", response.data.user);
+          password: this.password
+        })
+        this.$store.dispatch('setToken', response.data.token)
+        this.$store.dispatch('setUser', response.data.user)
         this.$router.push({
-          name:'vulnerabilities',
-         
+          name: 'vulnerabilities'
         })
       } catch (error) {
-        this.error = error.response.data.error;
+        this.error = error.response.data.error
       }
-    },
+    }
   },
-  components:{
+  components: {
     Panel
-  
+
   }
-};
+}
 </script>
-
 <style scoped>
-
 </style>

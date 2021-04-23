@@ -60,27 +60,26 @@
 </template>
 
 <script>
-import VulnerabilitiesService from "@/services/VulnerabilitiesService";
-import Panel from "@/components/Panel";
+import VulnerabilitiesService from '@/services/VulnerabilitiesService'
+import Panel from '@/components/Panel'
 export default {
   components: {
-    Panel,
+    Panel
   },
   data() {
     return {
-      vulnerabilities: [],
-    };
-  },
-  async mounted() {
-    
-    try{
-    this.vulnerabilities = (await VulnerabilitiesService.index({
-    })).data;
-    }catch(err){
-      console.log(err)
+      vulnerabilities: []
     }
   },
-};
+  async mounted() {
+    try {
+    this.vulnerabilities = (await VulnerabilitiesService.index({
+    })).data
+    } catch (err) {
+      console.log(err)
+    }
+  }
+}
 </script>
 
 <style>

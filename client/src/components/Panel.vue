@@ -6,7 +6,7 @@
         <slot>
             No slot content defined
         </slot>
-        
+
       </v-card-text>
       <slot name="footer"></slot>
     </v-card>
@@ -15,11 +15,10 @@
 
 <script>
 export default {
-    
-    props:[
+
+    props: [
         'title'
-    ],
-    
+    ]
 
 }
 </script>

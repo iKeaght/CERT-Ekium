@@ -95,126 +95,127 @@
     </slot>
      <!-- footer display arrow-->
     <slot name="footer" v-if="!loading && !searching && !error">
-      
+
       <v-btn outlined @click="previousPage()"
         >{{leftIndex}}<v-icon>chevron_left</v-icon></v-btn
       >
-      
+
       <v-btn outlined @click="nextPage()">{{rightIndex}}<v-icon>chevron_right</v-icon></v-btn>
        <div outline  >Results :{{totalResults}}</div>
     </slot>
   </panel>
 </template>
 <script>
-import Panel from "@/components/Panel";
+import Panel from '@/components/Panel'
 
 export default {
   data() {
     return {
-      search: "",
-      title: "Find a vulnerability",
+      search: '',
+      title: 'Find a vulnerability',
       searching: true,
       loading: false,
       dataApiCert: {},
-      NoDataAvailable: "No Data Found",
+      NoDataAvailable: 'No Data Found',
       error: false,
       startIndex: 0,
       leftIndex: 0,
       rightIndex: 25,
       resultsPerPage: 25,
       totalResults: 0
-    };
+    }
   },
 
   components: { Panel },
 
   methods: {
     async getApi() {
-      var myHeaders = new Headers();
+      var myHeaders = new Headers()
 
       var myInit = {
-        method: "GET",
+        method: 'GET',
         headers: myHeaders,
-        mode: "cors",
-        cache: "default",
-      };
-      this.searching = false;
-      this.loading = true;
+        mode: 'cors',
+        cache: 'default'
+      }
+      this.searching = false
+      this.loading = true
       try {
-        const url = `https://services.nvd.nist.gov/rest/json/cves/1.0/?keyword=${this.search}&startIndex=${this.startIndex}&resultsPerPage=${this.resultsPerPage}`;
-        this.title = this.search;
-        const res = await fetch(url, myInit);
-        const results = await res.json();
+        const url = `https://services.nvd.nist.gov/rest/json/cves/1.0/?keyword=${this.search}&startIndex=${this.startIndex}&resultsPerPage=${this.resultsPerPage}`
+        this.title = this.search
+        const res = await fetch(url, myInit)
+        const results = await res.json()
         this.totalResults = results.totalResults
-        this.dataApiCert = results.result;
+        this.dataApiCert = results.result
 
-        console.log("dataApiCert :", this.dataApiCert);
-        this.test = true;
-        this.loading = false;
-        if (typeof this.dataApiCert == "undefined") {
-          console.log("dataApiCert in if:", this.dataApiCert);
-          this.dataApiCert = "vide";
-          this.error = true;
+        console.log('dataApiCert :', this.dataApiCert)
+        this.test = true
+        this.loading = false
+        if (typeof this.dataApiCert === 'undefined') {
+          console.log('dataApiCert in if:', this.dataApiCert)
+          this.dataApiCert = 'vide'
+          this.error = true
         }
       } catch (err) {
-        this.test = false;
+        this.test = false
       }
     },
     mounted() {
-      this.getApi();
+      this.getApi()
     },
     goBack() {
-      (this.searching = true), (this.error = false);
+      this.searching = true
+      this.error = false
     },
      previousPage() {
       this.loading = true
-      if (this.startIndex == 0) {
-        return;
+      if (this.startIndex === 0) {
+        return
       }
       this.leftIndex = this.leftIndex - 25
-      this.rightIndex = this.rightIndex -25
-      this.startIndex = this.startIndex - 25;
+      this.rightIndex = this.rightIndex - 25
+      this.startIndex = this.startIndex - 25
 
-      this.getApi();
+      this.getApi()
     },
     nextPage() {
       this.loading = true
       this.rightIndex = this.rightIndex + 25
-      this.leftIndex = this.leftIndex +25
-      this.startIndex = this.startIndex + 25;
-      this.getApi();
+      this.leftIndex = this.leftIndex + 25
+      this.startIndex = this.startIndex + 25
+      this.getApi()
     },
     goToExternalPage(service) {
-      window.open(`${service.cve.references.reference_data[0].url}`, "_blank");
-      console.log("refe", service.cve.references.reference_data[0]);
+      window.open(`${service.cve.references.reference_data[0].url}`, '_blank')
+      console.log('refe', service.cve.references.reference_data[0])
     },
     checkproperty(object, path) {
-      var current = object;
-      var components = path.split(".");
+      var current = object
+      var components = path.split('.')
       for (var i = 0; i < components.length; i++) {
         if (
-          typeof current !== "object" ||
+          typeof current !== 'object' ||
           !current.hasOwnProperty(components[i])
         ) {
-          return false;
+          return false
         }
-        current = current[components[i]];
+        current = current[components[i]]
       }
-      return true;
-    },
+      return true
+    }
   },
   filters: {
     subStr(value) {
       return (
         value.substring(8, 10) +
-        "/" +
+        '/' +
         value.substring(5, 7) +
-        "/" +
+        '/' +
         value.substring(0, 4)
-      );
-    },
-  },
-};
+      )
+    }
+  }
+}
 </script>
 <style>
 .urllink {

@@ -43,15 +43,11 @@ export default new Router({
       name: 'vulnerabilityEdit',
       component: EditVulnerability
     },
-    { 
-
-            path: '/vulnerability/:vulnerabilityId/delete', 
-      
-            name: 'vulnerabilityDelete', 
-      
-            component: DeleteVulnerability 
-      
-          }, 
+    {
+      path: '/vulnerability/:vulnerabilityId/delete',
+      name: 'vulnerabilityDelete',
+      component: DeleteVulnerability
+    },
     {
       path: '*',
       redirect: 'about'
@@ -66,6 +62,6 @@ export default new Router({
       name: 'search',
       component: Search
     }
-   
+
   ]
 })

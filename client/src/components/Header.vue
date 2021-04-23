@@ -46,17 +46,17 @@
 
 <script>
 export default {
-  name: "Header",
-  methods:{
+  name: 'Header',
+  methods: {
     logout() {
-      this.$store.dispatch("setToken", null);
-      this.$store.dispatch("setUser", null);
+      this.$store.dispatch('setToken', null)
+      this.$store.dispatch('setUser', null)
       this.$router.push({
-          name:'vulnerabilities'
+          name: 'vulnerabilities'
         })
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style scoped>
