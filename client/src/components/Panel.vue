@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <v-card class="mx-auto" min-width="500" min-height="200">
-      <v-card-title class="cyan justify-center" >{{title}} <slot name="action"/></v-card-title>
+    <v-card class="2c9dbd" min-width="500" min-height="200">
+      <v-card-title class="cyan darken-1" right-center >{{title}} <slot name="action"/></v-card-title>
       <v-card-text class="pl-4 pr-4 pt-2 pb-2">
         <slot>
             No slot content defined

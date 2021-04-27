@@ -11,6 +11,8 @@
 <a @click="goToExternalPage_Youtube()">
   <img :src="require('@/assets/Youtube_logo.png')" alt="logo_ekium" height="80" width="80">
 </a>
+<br>
+<h4 justify>Ekium est une société spécialisée dans les métiers de l’ingénierie et de l’automation. Elle accompagne les industries de procédé en France et à l’international. Nos équipes pluridisciplinaires interviennent de la conception à la réhabilitation des sites industriels.</h4>
     </slot>
   </panel>
 </template>

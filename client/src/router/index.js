@@ -9,10 +9,16 @@ import ViewVulnerability from '@/components/ViewVulnerability'
 import About from '@/components/About'
 import Search from '@/components/Search'
 import DeleteVulnerability from '@/components/DeleteVulnerability'
+import Home from '@/components/Home'
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/home',
+      name: 'home',
+      component: Home
+    },
     {
       path: '/register',
       name: 'register',
@@ -50,7 +56,7 @@ export default new Router({
     },
     {
       path: '*',
-      redirect: 'about'
+      redirect: 'home'
     },
     {
       path: '/about',

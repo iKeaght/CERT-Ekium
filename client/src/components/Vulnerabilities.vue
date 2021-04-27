@@ -50,6 +50,10 @@
           <td><v-btn
             dark
             class="cyan"
+            :to="{
+              name: 'vulnerabilityDelete',
+              params: { vulnerabilityId: vulne.id },
+            }"
             ><v-icon color="black">delete</v-icon></v-btn
           ></td>
       </tr>
