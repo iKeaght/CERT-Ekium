@@ -1,11 +1,12 @@
 <template>
-  <v-footer>
-    <div>
+<div>
+  <v-card  >
+  <v-footer >
+  <div>
     <h4> Documents </h4>
-    <a href="google.fr" left-center style="color: #626262; text-decoration: underline;">Mentions légales</a> <br>
-    <a  href="" style="color: #626262; text-decoration: underline;">Rapport d'activité Ekium 2019</a> <br>
+    <a  href="https://fr.calameo.com/read/0061403055e12c787eb75" style="color: #626262; text-decoration: underline;">Rapport d'activité Ekium 2019</a> <br>
     <a href="https://www.ekium.eu/wp-content/uploads/2020/03/ekium_charte_responsabilite_societale_des_entreprises.pdf" style="color: #626262; text-decoration: underline;">Charte RSE</a> <br>
-    <a  href="" style="color: #626262; text-decoration: underline;">CV EKIUM</a> <br>
+    <a  href="http://www.ekium.eu/wp-content/uploads/2021/03/Cv-2021-Ekium-une-societe-du-Groupe-SNEF_web.pdf" style="color: #626262; text-decoration: underline;">CV EKIUM</a> <br>
     </div>
     <v-spacer></v-spacer>
      <div>
@@ -25,13 +26,44 @@
      <br> <br>
      </div>
      <v-spacer></v-spacer>
-    <h2> aa </h2>
+    <div>
+      <h3>Join us on social networks</h3>
+      <br>
+    <v-avatar @click="goToExternalPage_Youtube()">
+    <img
+          :src="require('@/assets/Youtube_logo_black.png')"
+          alt="logo"
+          max-height="40"
+          max-width="40"
+        /></v-avatar>
+        <v-avatar @click="goToExternalPage_Linkedin()">
+    <img
+          :src="require('@/assets/Linkedin_logo_black.png')"
+          alt="logo"
+          max-height="40"
+          max-width="40"
+        /></v-avatar>
+    </div>
   </v-footer>
+  </v-card>
+</div>
   </template>
 
-<style scoped>
-.home {
-  cursor: auto;
-}
+<script>
+export default {
+methods: {
+    goToExternalPage_Ekium() {
+      window.open('http://www.ekium.eu', '_blank')
+      },
+    goToExternalPage_Linkedin() {
+      window.open('https://fr.linkedin.com/company/ekium', '_blank')
+      },
 
+    goToExternalPage_Youtube() {
+      window.open('https://www.youtube.com/user/GroupeEkium', '_blank')
+      }
+}
+}
+</script>
+<style scoped>
 </style>

@@ -1,16 +1,16 @@
 <template>
   <panel title="Vulnerabilities">
     <v-btn
-      class="cyan accent-2"
       slot="action"
-      router
-      to="/vulnerability/add"
+      class="blue-dark-3"
       light
-      medium
+      small
+      outlined
       absolute
       right
       middle
-      fab
+      router
+      to="/vulnerability/add"
     >
       <v-icon>add</v-icon>
     </v-btn>

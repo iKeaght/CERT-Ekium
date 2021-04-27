@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar fixed class="#626262" app outlined l >
+  <v-app-bar fixed class="white" app outlined >
     <v-toolbar-title class="mr-4">
       <!-- <v-btn text dark router to='/'>CERT Ekium</v-btn> -->
       <v-avatar :tile="true">
@@ -13,14 +13,17 @@
       <span class="#7A7A7A">CERT Ekium</span>
     </v-toolbar-title>
     <v-toolbar-items>
-      <v-btn  text  class="#7A7A7A" router to="/vulnerabilities">
-        Vulnerabilities
-      </v-btn>
-      <v-btn  text class="#7A7A7A" router to="/search">
-        Search
+      <v-btn  text  class="#7A7A7A" router to="/">
+        Home
       </v-btn>
       <v-btn  text class="#7A7A7A" font router to="/about">
         About
+      </v-btn>
+       <v-btn  text class="#7A7A7A" router to="/search">
+        Search
+      </v-btn>
+      <v-btn v-if="$store.state.isUserLoggedIn"  text  class="#7A7A7A" router to="/vulnerabilities">
+      Your vulnerabilities
       </v-btn>
     </v-toolbar-items>
     <v-spacer></v-spacer>
@@ -37,7 +40,7 @@
         router
         @click="logout"
       >
-        Log out
+         Log out
       </v-btn>
     </v-toolbar-items>
   </v-app-bar>

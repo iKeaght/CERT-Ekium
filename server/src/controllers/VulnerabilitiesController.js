@@ -45,6 +45,20 @@ module.exports = {
                 error: 'An error has occured trying to update the vulnerabilities'
             })
         }
+    },
+    async destroy(req, res) {
+        try {
+            const vulnerability = await Vulnerability.destroy(req.body, {
+                where:{
+                    id: req.params.vulnerabilityId
+                }
+            })
+            res.send(req.body)
+        } catch (err) {
+            res.status(500).send({
+                error: 'An error has occured trying to destroy the vulnerability'
+            })
+        }
     }
 
 }

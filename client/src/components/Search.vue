@@ -1,8 +1,19 @@
 <template>
   <panel :title="title">
+    <v-btn
+      slot="action"
+      light
+      small
+      outlined
+      absolute
+      left
+      middle
+      router
+      to="/home"
+      ><v-icon>arrow_back</v-icon></v-btn>
     <!--searching display-->
     <slot v-if="searching">
-      <v-text-field label="Search" filled v-model="search"></v-text-field>
+      <v-text-field label="Search" filled v-model="search" v-on:keyup.enter="getApi()"></v-text-field>
 
       <v-btn outlined right router @click="getApi()"
         ><v-icon>search</v-icon></v-btn
@@ -39,12 +50,11 @@
             Getting your data
           </v-col>
           <v-col cols="6">
-            <v-progress-linear
-              color="red lighten-1"
-              indeterminate
-              rounded
-              height="6"
-            ></v-progress-linear>
+            <v-progress-circular
+        :size="100"
+        color="#2C9DBD"
+        indeterminate
+      ></v-progress-circular>
           </v-col>
         </v-row> </v-container
     ></slot>
@@ -56,6 +66,7 @@
             <tr>
               <th class="text-left text-center">Vulnerability n°</th>
               <th class="text-left text-center">Description</th>
+              <th class="text-right text-center"> Last Modified </th>
               <th class="text-right text-center">Release Date</th>
               <th class="text-right text-center">Severity</th>
               <th class="text-right text-center width: 15px">URL</th>
@@ -69,23 +80,21 @@
                   service.cve.description.description_data.__ob__.value[0].value
                 }}
               </td>
+              <td>{{ service.lastModifiedDate | subStr }}</td>
               <td>{{ service.publishedDate | subStr }}</td>
               <td v-if="service.hasOwnProperty('impact')">
                 {{ service.impact.baseMetricV2.severity }}
+                <img :src="require('@/assets/low.png')" alt="low" height="40" width="40" v-if= "service.impact.baseMetricV2.severity === 'LOW' ">
+                <img :src="require('@/assets/high.png')" alt="low" height="40" width="40" v-if= "service.impact.baseMetricV2.severity === 'HIGH' ">
+                <img :src="require('@/assets/medium.png')" alt="low" height="40" width="40" v-if= "service.impact.baseMetricV2.severity === 'MEDIUM' ">
+                <img :src="require('@/assets/critical.png')" alt="low" height="40" width="40" v-if= "service.impact.baseMetricV2.severity === 'CRITICAL' ">
               </td>
               <td v-else>{{ NoDataAvailable }}</td>
               <td
                 style="text-align: center"
                 v-if="checkproperty(service, 'cve.references.reference_data')"
               >
-                <div
-                  v-for="(url, n) in service.cve.references.reference_data"
-                  :key="n"
-                  class="urllink"
-                  @click="goToExternalPage(service)"
-                >
-                  {{ url.url }}
-                </div>
+                <a @click="goToExternalPage_CVE(service)"> <v-icon> open_in_new </v-icon> </a>
               </td>
               <td v-else>{{ NoDataAvailable }}</td>
             </tr>
@@ -120,8 +129,8 @@ export default {
       error: false,
       startIndex: 0,
       leftIndex: 0,
-      rightIndex: 25,
-      resultsPerPage: 25,
+      rightIndex: 100,
+      resultsPerPage: 100,
       totalResults: 0
     }
   },
@@ -129,6 +138,9 @@ export default {
   components: { Panel },
 
   methods: {
+    goToExternalPage_CVE(service) {
+      window.open(`https://nvd.nist.gov/vuln/detail/${service.cve.CVE_data_meta.ID}`, '_blank')
+    },
     async getApi() {
       var myHeaders = new Headers()
 
@@ -141,7 +153,7 @@ export default {
       this.searching = false
       this.loading = true
       try {
-        const url = `https://services.nvd.nist.gov/rest/json/cves/1.0/?keyword=${this.search}&startIndex=${this.startIndex}&resultsPerPage=${this.resultsPerPage}`
+        const url = `https://services.nvd.nist.gov/rest/json/cves/1.0/?keyword=${this.search}&startIndex=${this.startIndex}&resultsPerPage=${this.resultsPerPage}&modStartDate=2020-01-01T00:00:00:000 UTC-05:00&orderDir=desc`
         this.title = this.search
         const res = await fetch(url, myInit)
         const results = await res.json()
@@ -172,17 +184,17 @@ export default {
       if (this.startIndex === 0) {
         return
       }
-      this.leftIndex = this.leftIndex - 25
-      this.rightIndex = this.rightIndex - 25
-      this.startIndex = this.startIndex - 25
+      this.leftIndex = this.leftIndex - 100
+      this.rightIndex = this.rightIndex - 100
+      this.startIndex = this.startIndex - 100
 
       this.getApi()
     },
     nextPage() {
       this.loading = true
-      this.rightIndex = this.rightIndex + 25
-      this.leftIndex = this.leftIndex + 25
-      this.startIndex = this.startIndex + 25
+      this.rightIndex = this.rightIndex + 100
+      this.leftIndex = this.leftIndex + 100
+      this.startIndex = this.startIndex + 100
       this.getApi()
     },
     goToExternalPage(service) {
