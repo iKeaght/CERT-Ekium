@@ -2,7 +2,7 @@
   <panel title="Vulnerabilities">
     <v-btn
       slot="action"
-      class="blue-dark-3"
+      class="grey darken-1"
       light
       small
       outlined
@@ -31,7 +31,7 @@
         <td>{{ vulne.title }}</td>
         <td> <v-btn
             dark
-            class="cyan"
+            class="grey"
             :to="{
               name: 'vulnerabilityId',
               params: { vulnerabilityId: vulne.id },
@@ -40,7 +40,7 @@
            </v-btn></td>
           <td><v-btn
             dark
-            class="cyan"
+            class="grey"
             :to="{
               name: 'vulnerabilityEdit',
               params: { vulnerabilityId: vulne.id },
@@ -49,7 +49,7 @@
           ></td>
           <td><v-btn
             dark
-            class="cyan"
+            class="grey"
             :to="{
               name: 'vulnerabilityDelete',
               params: { vulnerabilityId: vulne.id },

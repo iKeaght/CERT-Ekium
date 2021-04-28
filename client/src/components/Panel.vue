@@ -1,12 +1,10 @@
 <template>
   <v-app>
-    <v-card  class="2c9dbd" min-width="500" min-height="200">
-      <slot name="action"/> <v-toolbar-title class="cyan darken-1" right-center >{{title}}</v-toolbar-title>
+    <v-card  class="grey lighten-5" min-width="500" min-height="250">
+      <slot name="action"/> <v-toolbar-title class="grey darken-1 white--text" right-center >{{title}}</v-toolbar-title>
       <v-card-text class="pl-4 pr-4 pt-2 pb-2">
         <slot>
-            No slot content defined
         </slot>
-
       </v-card-text>
       <slot name="footer"></slot>
     </v-card>

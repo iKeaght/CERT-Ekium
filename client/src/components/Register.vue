@@ -7,7 +7,7 @@
         </form>
       <div class="error2" v-html="error" />
       <br />
-      <v-btn class="cyan" @click="register"> Register</v-btn>
+      <v-btn class="grey darken-1 white--text" @click="register"> Register</v-btn>
       </v-card-text>
 </panel>
 </template>

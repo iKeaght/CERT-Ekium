@@ -30,7 +30,7 @@
       <v-img
         src="https://www.ekium.eu/wp-content/uploads/2020/07/Sch%C3%A9ma-chiffres-cl%C3%A9s-site-internet-anglais-1024x724.png"
       >
-        <v-expand-transition>
+        <v-slide-y-transition>
           <div
             v-if="hover"
             class="d-flex transition-fast-in-fast-out white v-card--reveal display-1 black--text"
@@ -41,7 +41,7 @@
         </v-img>
           </div>
 
-        </v-expand-transition>
+        </v-slide-y-transition>
       </v-img>
     </v-card>
   </v-hover>

@@ -19,7 +19,6 @@ module.exports = (app) => {
     app.post('/vulnerabilities', 
     VulnerabilitiesController.post)
     
-
     //edit a particular vulnerability
     app.put('/vulnerabilities/:vulnerabilityId', 
     VulnerabilitiesController.put)

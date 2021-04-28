@@ -5,7 +5,7 @@
         <v-text-field name="password" type="password" label="Password" v-model="password" v-on:keyup.enter="login()" ></v-text-field>
         <div class="error2" v-html="error" />
         <br />
-        <v-btn class="cyan" @click="login"> Login</v-btn>
+        <v-btn class="white--text grey darken-1" @click="login"> Login</v-btn>
       </v-card-text>
 </panel>
 </template>
