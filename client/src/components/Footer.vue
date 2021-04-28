@@ -4,8 +4,8 @@
   <v-footer >
   <div>
     <h4> Documents </h4>
-    <a  href="https://fr.calameo.com/read/0061403055e12c787eb75" style="color: #626262; text-decoration: underline;">Rapport d'activité Ekium 2019</a> <br>
-    <a href="https://www.ekium.eu/wp-content/uploads/2020/03/ekium_charte_responsabilite_societale_des_entreprises.pdf" style="color: #626262; text-decoration: underline;">Charte RSE</a> <br>
+    <a  href="https://fr.calameo.com/read/0061403055e12c787eb75" style="color: #626262; text-decoration: underline;">Activity report - Ekium 2019</a> <br>
+    <a href="https://www.ekium.eu/wp-content/uploads/2020/03/ekium_charte_responsabilite_societale_des_entreprises.pdf" style="color: #626262; text-decoration: underline;">RSE CHART</a> <br>
     <a  href="http://www.ekium.eu/wp-content/uploads/2021/03/Cv-2021-Ekium-une-societe-du-Groupe-SNEF_web.pdf" style="color: #626262; text-decoration: underline;">CV EKIUM</a> <br>
     </div>
     <v-spacer></v-spacer>

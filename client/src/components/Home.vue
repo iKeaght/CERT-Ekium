@@ -5,7 +5,7 @@
   <br>
       <h1> Welcome to Ekium CERT </h1> <br>
 
-<img :src="require('@/assets/Ekium_img.png')" alt="img_ekium" width="2100" >
+<v-img :src="require('@/assets/Ekium_img.png')" alt="img_ekium" width="2100" > </v-img>
   </div>
 </template>
 

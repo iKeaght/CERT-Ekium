@@ -16,6 +16,6 @@ export default {
         return Api().put(`vulnerabilities/${vulnerability.id}`, vulnerability)
     },
     destroy (vulnerability) {
-         return Api().destroy(`vulnerabilities/${vulnerability.id}`, vulnerability)
+         return Api().delete(`vulnerabilities/${vulnerability.id}`, vulnerability)
     }
 }

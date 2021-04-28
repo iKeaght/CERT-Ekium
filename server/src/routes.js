@@ -22,4 +22,7 @@ module.exports = (app) => {
     //edit a particular vulnerability
     app.put('/vulnerabilities/:vulnerabilityId', 
     VulnerabilitiesController.put)
+
+    app.delete('/vulnerabilities/:vulnerabilityId',
+    VulnerabilitiesController.delete)
 }

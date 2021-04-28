@@ -2,6 +2,8 @@ const fs = require('fs')
 const path = require('path')
 const Sequelize = require('sequelize')
 const config = require('../config/config')
+const User = require('./User')
+const Vulnerabilities = require('./Vulnerabilities')
 const db = {}
 
 

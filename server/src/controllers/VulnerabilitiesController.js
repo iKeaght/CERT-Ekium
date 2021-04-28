@@ -46,15 +46,16 @@ module.exports = {
             })
         }
     },
-    async destroy(req, res) {
+    async delete(req, res) {
         try {
-            const vulnerability = await Vulnerability.destroy(req.body, {
+            const vulnerability = await Vulnerability.destroy({
                 where:{
                     id: req.params.vulnerabilityId
                 }
             })
             res.send(req.body)
         } catch (err) {
+            console.log(err)
             res.status(500).send({
                 error: 'An error has occured trying to destroy the vulnerability'
             })

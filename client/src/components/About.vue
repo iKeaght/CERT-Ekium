@@ -7,7 +7,7 @@
       <h1> About us </h1>
 
 <br>
-<img :src="require('@/assets/Ekium_img.png')" alt="img_ekium" width="2100" > <br><br><br>
+<v-img :src="require('@/assets/Ekium_img.png')" alt="img_ekium" width="2100" > </v-img><br><br><br>
 <v-divider  color="#2C9DBD"
   inset
 ></v-divider>

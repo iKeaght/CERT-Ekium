@@ -18,7 +18,6 @@
   <template v-slot:default>
     <thead>
       <tr>
-        <th class="text-left text-center">n°</th>
         <th class="text-left text-center">Name</th>
         <th class="text-left text-center">View</th>
         <th class="text-right text-center">Edit</th>
@@ -27,7 +26,6 @@
     </thead>
     <tbody>
       <tr  v-for="vulne in vulnerabilities" :key="vulne.id" class="black--text">
-        <td>{{ vulne.id }}</td>
         <td>{{ vulne.title }}</td>
         <td> <v-btn
             dark

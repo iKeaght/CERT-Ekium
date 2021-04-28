@@ -1,4 +1,5 @@
-const Promise = require('bluebird')
+const Promise = require('bluebird');
+const Vulnerabilities = require('./Vulnerabilities');
 const bcrypt = Promise.promisifyAll(require('bcrypt'))
 
 
@@ -31,6 +32,9 @@ module.exports = (sequelize, DataTypes) => {
     User.prototype.comparePassword = function comparePassword(password) {
         return bcrypt.compare(password, this.password)
     }
+    //User.hasMany(Vulnerabilities)
+    //Vulnerabilities.belongsTo(User)
+    
 
     return User
 }
