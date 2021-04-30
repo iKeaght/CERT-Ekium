@@ -29,6 +29,14 @@ module.exports = (sequelize, DataTypes) => {
         }
 
     })
+    User.associate = models => {
+        User.hasMany(models.Vulnerabilities, {
+            onDelete: "cascade"
+        })
+    }
+
+
+
     User.prototype.comparePassword = function comparePassword(password) {
         return bcrypt.compare(password, this.password)
     }

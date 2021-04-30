@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/iKeaght/CERT-Ekium/issues"
   },
-  "homepage": "https://github.com/iKeaght/CERT-Ekium#readme"
+  "homepage": "https://github.com/iKeaght/CERT-Ekium#readme",
+  "devDependencies": {
+    "sass": "^1.32.12",
+    "sass-loader": "^11.0.1",
+    "webpack": "^5.36.1"
+  }
 }

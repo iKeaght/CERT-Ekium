@@ -1,8 +1,20 @@
+const User = require('./User');
+
 module.exports = (sequelize, DataTypes) => {
     const Vulnerability = sequelize.define('Vulnerability',{
-        title: DataTypes.STRING,   
+        title: {
+        type: DataTypes.STRING,  
+        allowNull: false 
+        }
     })
 
+    Vulnerability.associate = models => {
+        Vulnerability.belongsTo(models.User, {
+            foreignKey: {
+                allowNull: false
+            }
+        })
+    }
     
 return Vulnerability
 }

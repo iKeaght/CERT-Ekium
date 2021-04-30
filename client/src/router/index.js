@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
 import Vulnerabilities from '@/components/Vulnerabilities'
+import AddVulnerabilities from '@/components/AddVulnerabilities'
 import CreateVulnerability from '@/components/CreateVulnerability'
 import EditVulnerability from '@/components/EditVulnerability'
 import ViewVulnerability from '@/components/ViewVulnerability'
@@ -42,6 +43,11 @@ export default new Router({
     {
       path: '/vulnerability/add',
       name: 'vulnerabilitiesAdd',
+      component: AddVulnerabilities
+    },
+    {
+      path: '/vulnerability/create',
+      name: 'vulnerabilitiesCreate',
       component: CreateVulnerability
     },
     {

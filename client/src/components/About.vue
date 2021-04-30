@@ -14,7 +14,7 @@
 <br>
 <h1 justify >Ekium in brief</h1>
 <br><br>
-<h4 class= "black--text" > Ekium, the French leader in Engineering and automation works with process industries in project management, design, implementation and automation.</h4>
+<h4 class= "black--text" > Ekium is a company specialized in engineering and automation. It supports industries in France and abroad. Our multi-disciplinary teams are involved from the design to the rehabilitation of industrial sites.</h4>
 
 <br><br>
 
