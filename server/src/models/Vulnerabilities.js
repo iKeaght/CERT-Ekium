@@ -5,14 +5,13 @@ module.exports = (sequelize, DataTypes) => {
         title: {
         type: DataTypes.STRING,  
         allowNull: false 
-        }
+        },
+        user_email: DataTypes.STRING
     })
 
     Vulnerability.associate = models => {
         Vulnerability.belongsTo(models.User, {
-            foreignKey: {
-                allowNull: false
-            }
+            foreignKey: 'user_email' 
         })
     }
     

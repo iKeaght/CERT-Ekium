@@ -41,7 +41,9 @@ import VulnerabilitiesService from '@/services/VulnerabilitiesService'
     data () {
       return {
       vulnerability: {
-          title: null
+          hasbeenconsulted: false,
+          title: null,
+          user_email: this.$store.state.user.email
       },
         items: [
           'Vmware',

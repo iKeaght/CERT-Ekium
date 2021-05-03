@@ -25,8 +25,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr  v-for="vulne in vulnerabilities" :key="vulne.id" class="black--text">
-        <td>{{ vulne.title }}</td>
+      <tr  v-for="vulne in vulnerabilities" :key="vulne.id" v-if="user_mail === vulne.user_email" class="black--text">
+        <td >{{ vulne.title }}</td>
         <td> <v-btn
             dark
             class="grey"
@@ -70,7 +70,8 @@ export default {
   },
   data() {
     return {
-      vulnerabilities: []
+      vulnerabilities: [],
+      user_mail: this.$store.state.user.email
     }
   },
   async mounted() {
