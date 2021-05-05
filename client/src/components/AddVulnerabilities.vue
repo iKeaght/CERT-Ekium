@@ -41,7 +41,7 @@ import VulnerabilitiesService from '@/services/VulnerabilitiesService'
     data () {
       return {
       vulnerability: {
-          hasbeenconsulted: false,
+          hasbeenseen: false,
           title: null,
           user_email: this.$store.state.user.email
       },
@@ -54,14 +54,16 @@ import VulnerabilitiesService from '@/services/VulnerabilitiesService'
     methods: {
     createVulnerabilities(title) {
       this.error = null
-      console.log('test', title)
-      for (var i = 0; i < title.length; i++) {
-        this.vulnerability.title = title[i]
-        VulnerabilitiesService.post(this.vulnerability)
+      if (title.length) {
+        for (var i = 0; i < title.length; i++) {
+          this.vulnerability.title = title[i]
+          VulnerabilitiesService.post(this.vulnerability)
+        }
+        this.$router.push({
+        name: 'vulnerabilities' })
+      } else {
+        console.log('fill in the blanks')
       }
-      this.$router.push({
-      name: 'vulnerabilities'
-      })
     }
   }
        }

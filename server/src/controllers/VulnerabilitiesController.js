@@ -3,9 +3,9 @@ module.exports = {
     async index(req, res) {
         try {
             const vulnerabilities = await Vulnerability.findAll({
-            
-            })
-            res.send(vulnerabilities)
+                attributes: ['title', 'id', 'user_email', 'hasbeenseen'],
+                distinct: true})
+            res.send(vulnerabilities) 
         } catch (err) {
             res.status(500).send({
                 error: 'An error has occured trying to fetch the vulnerabilities'
