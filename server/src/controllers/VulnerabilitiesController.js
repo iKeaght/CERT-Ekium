@@ -2,9 +2,9 @@ const { Vulnerability } = require('../models')
 module.exports = {
     async index(req, res) {
         try {
-            const vulnerabilities = await Vulnerability.findAll({
+            const vulnerabilities = await Vulnerability.findAll({distinct: true,
                 attributes: ['title', 'id', 'user_email', 'hasbeenseen'],
-                distinct: true})
+                })
             res.send(vulnerabilities) 
         } catch (err) {
             res.status(500).send({

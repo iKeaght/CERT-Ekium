@@ -64,7 +64,7 @@
           <template v-slot:default>
             <thead>
               <tr>
-                <th class="text-left text-center">Vulnerability n°</th>
+                <th class="text-left text-center">Vulnerability id</th>
                 <th class="text-left text-center">Description</th>
                 <th>  <v-expansion-panels focusable > <v-expansion-panel > <v-expansion-panel-header  class="grey--text text-right text-center" > Last Modified </v-expansion-panel-header> <v-expansion-panel-content>
                 <h4 @click="changemodifdate('last3months')" class="text--center"> Last 3 months  </h4> <br>
@@ -87,7 +87,7 @@
                 :key="index"
                 nbvulnerability = index
               >
-                <td class="text-center">{{ index + 1 }}</td>
+                <td class="text-center">{{service.cve.CVE_data_meta.ID}}</td>
                 <td class="text-center">
                   {{
                     service.cve.description.description_data.__ob__.value[0]

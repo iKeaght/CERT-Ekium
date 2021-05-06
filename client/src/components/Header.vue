@@ -1,7 +1,6 @@
 <template>
   <v-app-bar fixed class="white" app outlined >
     <v-toolbar-title class="mr-4">
-      <!-- <v-btn text dark router to='/'>CERT Ekium</v-btn> -->
       <v-avatar :tile="true">
         <img
           :src="require('@/assets/logoEkium.png')"
@@ -34,6 +33,11 @@
       <v-btn v-if="!$store.state.isUserLoggedIn" text class="#7A7A7A" router to="/register">
         Sign Up
       </v-btn>
+    </v-toolbar-items>
+    <v-toolbar-title v-if="$store.state.isUserLoggedIn" class="mr-2 grey--text">
+       {{this.$store.state.user.email}}
+    </v-toolbar-title>
+    <v-toolbar-items>
       <v-btn
         v-if="$store.state.isUserLoggedIn"
         text class="#7A7A7A"
