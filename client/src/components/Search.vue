@@ -95,8 +95,8 @@
                   }}
                 </td>
                 <td>{{ service.lastModifiedDate | subStr }}</td>
-                <td v-if="service.hasOwnProperty('impact')">
-                  {{ service.impact.baseMetricV2.severity }} <br>
+                <td v-if="checkproperty(service,'impact.baseMetricV2')">
+                  {{ service.impact.baseMetricV2.severity}} <br>
                   <img :src="require('@/assets/low.png')" alt="low" height="40" width="40" v-if= "service.impact.baseMetricV2.severity === 'LOW' ">
                   <img :src="require('@/assets/high.png')" alt="low" height="40" width="40" v-if= "service.impact.baseMetricV2.severity === 'HIGH' ">
                   <img :src="require('@/assets/medium.png')" alt="low" height="40" width="40" v-if= "service.impact.baseMetricV2.severity === 'MEDIUM' ">
