@@ -2,12 +2,12 @@
   <panel :title="title">
     <v-btn
       slot="action"
-      light
       small
-      outlined
+      light
+      class="grey darken-1"
       absolute
+      outlined
       left
-      middle
       router
       to="/home"
       ><v-icon>arrow_back</v-icon></v-btn>
@@ -64,6 +64,7 @@
           <template v-slot:default>
             <thead>
               <tr>
+                <th class="text-left text-center">N°</th>
                 <th class="text-left text-center">Vulnerability id</th>
                 <th class="text-left text-center">Description</th>
                 <th>  <v-expansion-panels focusable > <v-expansion-panel > <v-expansion-panel-header  class="grey--text text-right text-center" > Last Modified </v-expansion-panel-header> <v-expansion-panel-content>
@@ -87,6 +88,7 @@
                 :key="index"
                 nbvulnerability = index
               >
+                <td class="text-center"> {{index+1}}</td>
                 <td class="text-center">{{service.cve.CVE_data_meta.ID}}</td>
                 <td class="text-center">
                   {{
