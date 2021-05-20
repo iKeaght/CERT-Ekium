@@ -2,14 +2,14 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
-import Vulnerabilities from '@/components/Vulnerabilities'
-import AddVulnerabilities from '@/components/AddVulnerabilities'
-import CreateVulnerability from '@/components/CreateVulnerability'
-import EditVulnerability from '@/components/EditVulnerability'
-import ViewVulnerability from '@/components/ViewVulnerability'
+import Keywords from '@/components/Keywords'
+import AddKeywords from '@/components/AddKeywords'
+import CreateKeyword from '@/components/CreateKeyword'
+import EditKeyword from '@/components/EditKeyword'
+import ViewVulnerabilities from '@/components/ViewVulnerabilities'
 import About from '@/components/About'
 import Search from '@/components/Search'
-import DeleteVulnerability from '@/components/DeleteVulnerability'
+import DeleteKeyword from '@/components/DeleteKeyword'
 import Home from '@/components/Home'
 Vue.use(Router)
 
@@ -31,34 +31,34 @@ export default new Router({
       component: Login
     },
     {
-      path: '/vulnerabilities',
-      name: 'vulnerabilities',
-      component: Vulnerabilities
+      path: '/Keywords',
+      name: 'Keywords',
+      component: Keywords
     },
     {
-      path: '/vulnerabilities/:vulnerabilityId',
-      name: 'vulnerabilityId',
-      component: ViewVulnerability
+      path: '/Keywords/:KeywordId',
+      name: 'KeywordId',
+      component: ViewVulnerabilities
     },
     {
-      path: '/vulnerability/add',
-      name: 'vulnerabilitiesAdd',
-      component: AddVulnerabilities
+      path: '/Keyword/add',
+      name: 'KeywordsAdd',
+      component: AddKeywords
     },
     {
-      path: '/vulnerability/create',
-      name: 'vulnerabilitiesCreate',
-      component: CreateVulnerability
+      path: '/Keyword/create',
+      name: 'KeywordsCreate',
+      component: CreateKeyword
     },
     {
-      path: '/vulnerability/:vulnerabilityId/edit',
-      name: 'vulnerabilityEdit',
-      component: EditVulnerability
+      path: '/Keyword/:KeywordId/edit',
+      name: 'KeywordEdit',
+      component: EditKeyword
     },
     {
-      path: '/vulnerability/:vulnerabilityId/delete',
-      name: 'vulnerabilityDelete',
-      component: DeleteVulnerability
+      path: '/Keyword/:KeywordId/delete',
+      name: 'KeywordDelete',
+      component: DeleteKeyword
     },
     {
       path: '*',

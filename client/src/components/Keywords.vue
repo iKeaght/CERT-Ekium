@@ -1,5 +1,5 @@
 <template>
-  <panel title="Vulnerabilities">
+  <panel title="Softwares">
     <v-btn
       slot="action"
       class="grey darken-1"
@@ -10,7 +10,7 @@
       right
       middle
       router
-      to="/vulnerability/add"
+      to="/keyword/add"
     >
       <v-icon>add</v-icon>
     </v-btn>
@@ -25,15 +25,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr  v-for="vulne in vulnerabilities " :key="vulne.title"  v-if="user_mail === vulne.user_email" class="black--text">
-        <td v-if= "!vulne.hasbeenseen" >{{ vulne.title }}</td>
-        <td v-if= "vulne.hasbeenseen" class= 'indigo--text'>{{ vulne.title }}</td>
+      <tr  v-for="kw in keyword " :key="kw.name"  v-if="user_mail === kw.user_email" class="black--text">
+        <td v-if= "!kw.hasbeenseen" >{{ kw.name }}</td>
+        <td v-if= "kw.hasbeenseen" class= 'indigo--text'>{{ kw.name }}</td>
         <td> <v-btn
             dark
             class="grey"
             :to="{
-              name: 'vulnerabilityId',
-              params: { vulnerabilityId: vulne.id },
+              name: 'KeywordId',
+              params: { KeywordId: kw.id },
             }"
           ><v-icon color="black">remove_red_eye</v-icon>
            </v-btn></td>
@@ -41,8 +41,8 @@
             dark
             class="grey"
             :to="{
-              name: 'vulnerabilityEdit',
-              params: { vulnerabilityId: vulne.id },
+              name: 'KeywordEdit',
+              params: { KeywordId: kw.id },
             }"
             ><v-icon color="black">edit</v-icon></v-btn
           ></td>
@@ -50,8 +50,8 @@
             dark
             class="grey"
             :to="{
-              name: 'vulnerabilityDelete',
-              params: { vulnerabilityId: vulne.id },
+              name: 'KeywordDelete',
+              params: { KeywordId: kw.id },
             }"
             ><v-icon color="black">delete</v-icon></v-btn
           ></td>
@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import VulnerabilitiesService from '@/services/VulnerabilitiesService'
+import KeywordService from '@/services/KeywordService'
 import Panel from '@/components/Panel'
 export default {
   components: {
@@ -71,7 +71,7 @@ export default {
   },
   data() {
     return {
-      vulnerabilities: [],
+      keyword: [],
       user_mail: this.$store.state.user.email
     }
   },
@@ -79,7 +79,7 @@ export default {
   },
   async mounted() {
     try {
-    this.vulnerabilities = (await VulnerabilitiesService.index({
+    this.keyword = (await KeywordService.index({
     })).data
     } catch (err) {
       console.log(err)

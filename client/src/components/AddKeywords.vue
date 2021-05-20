@@ -5,9 +5,9 @@
 <v-combobox
           outlined
           clearable
-          v-model="vulnerability.title"
+          v-model="keyword.name"
           :items="items"
-          label="Select the vulnerabilities you want to add, press ENTER to create another"
+          label="Select the softwares you want to add, press ENTER to create another"
           multiple
           chips
         >
@@ -30,19 +30,18 @@
         </v-combobox>
     <br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br>
     <div>
-    <v-btn dark class="grey darken-1" @click="createVulnerabilities(vulnerability.title)">Add Vulnerabilities</v-btn>
+    <v-btn dark class="grey darken-1" @click="createKeywords(keyword.name)">Add Softwares</v-btn>
     </div>
   </v-container>
 </template>
 
 <script>
-import VulnerabilitiesService from '@/services/VulnerabilitiesService'
+import KeywordService from '@/services/KeywordService'
   export default {
     data () {
       return {
-      vulnerability: {
-          hasbeenseen: false,
-          title: null,
+      keyword: {
+          name: null,
           user_email: this.$store.state.user.email
       },
         items: [
@@ -52,15 +51,15 @@ import VulnerabilitiesService from '@/services/VulnerabilitiesService'
       }
     },
     methods: {
-    createVulnerabilities(title) {
+    createKeywords(title) {
       this.error = null
       if (title.length) {
         for (var i = 0; i < title.length; i++) {
-          this.vulnerability.title = title[i]
-          VulnerabilitiesService.post(this.vulnerability)
+          this.keyword.name = title[i]
+          KeywordService.post(this.keyword)
         }
         this.$router.push({
-        name: 'vulnerabilities' })
+        name: 'Keywords' })
       } else {
         console.log('fill in the blanks')
       }

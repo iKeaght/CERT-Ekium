@@ -1,11 +1,9 @@
-const { Vulnerability } = require('../models')
+const { Keyword } = require('../models')
 module.exports = {
     async index(req, res) {
         try {
-            const vulnerabilities = await Vulnerability.findAll({distinct: true,
-                attributes: ['title', 'id', 'user_email', 'hasbeenseen'],
-                })
-            res.send(vulnerabilities) 
+            const keyword = await Keyword.findAll({distinct: true })
+            res.send(keyword) 
         } catch (err) {
             res.status(500).send({
                 error: 'An error has occured trying to fetch the vulnerabilities'
@@ -14,8 +12,8 @@ module.exports = {
     },
     async show(req, res) {
         try {
-            const vulnerability = await Vulnerability.findByPk(req.params.vulnerabilityId)
-            res.send(vulnerability)
+            const keyword = await Keyword.findByPk(req.params.keywordId)
+            res.send(keyword)
         } catch (err) {
             res.status(500).send({
                 error: 'An error has occured trying to fetch the vulnerabilities'
@@ -24,8 +22,8 @@ module.exports = {
     },
     async post(req, res) {
         try {
-            const vulnerability = await Vulnerability.create(req.body)
-            res.send(vulnerability)
+            const keyword = await Keyword.create(req.body)
+            res.send(keyword)
         } catch (err) {
             res.status(500).send({
                 error: 'An error has occured trying to create the vulnerabilities'
@@ -34,9 +32,9 @@ module.exports = {
     },
     async put(req, res) {
         try {
-            const vulnerability = await Vulnerability.update(req.body, {
+            const keyword = await Keyword.update(req.body, {
                 where:{
-                    id: req.params.vulnerabilityId
+                    id: req.params.keywordId
                 }
             })
             res.send(req.body)
@@ -48,16 +46,16 @@ module.exports = {
     },
     async delete(req, res) {
         try {
-            const vulnerability = await Vulnerability.destroy({
+            const keyword = await Keyword.destroy({
                 where:{
-                    id: req.params.vulnerabilityId
+                    id: req.params.keywordId
                 }
             })
             res.send(req.body)
         } catch (err) {
             console.log(err)
             res.status(500).send({
-                error: 'An error has occured trying to destroy the vulnerability'
+                error: 'An error has occured trying to destroy the keyword'
             })
         }
     }

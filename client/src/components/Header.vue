@@ -21,8 +21,8 @@
        <v-btn  text class="#7A7A7A" router to="/search">
         Search
       </v-btn>
-      <v-btn v-if="$store.state.isUserLoggedIn"  text  class="#7A7A7A" router to="/vulnerabilities">
-      Your vulnerabilities
+      <v-btn v-if="$store.state.isUserLoggedIn"  text  class="#7A7A7A" router to="/keywords">
+      Your softwares
       </v-btn>
     </v-toolbar-items>
     <v-spacer></v-spacer>

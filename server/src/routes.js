@@ -1,6 +1,9 @@
 const AuthentificationController = require('./controllers/AuthentificationController')
+const keywordController = require('./controllers/keyword.controller')
+const keywordcontroller = require('./controllers/keyword.controller')
+const CvssController = require('./controllers/CvssController')
+
 const AuthentificationControllerPolicy = require('./policies/AuthentificationControllerPolicy')
-const VulnerabilitiesController = require('./controllers/VulnerabilitiesController')
 
 module.exports = (app) => {
     app.post('/register', 
@@ -10,20 +13,21 @@ module.exports = (app) => {
     app.post('/login', 
     AuthentificationController.login)
 
-    app.get('/vulnerabilities', 
-    VulnerabilitiesController.index)
+    app.post('/keyword',
+    keywordcontroller.post)
 
-    //view particular vulnerability
-    app.get('/vulnerabilities/:vulnerabilityId', 
-    VulnerabilitiesController.show)
+    app.get('/keyword', 
+    keywordcontroller.index)
 
-    app.post('/vulnerabilities', 
-    VulnerabilitiesController.post)
-    
-    //edit a particular vulnerability
-    app.put('/vulnerabilities/:vulnerabilityId', 
-    VulnerabilitiesController.put)
+    app.get('/keyword/:keywordId', 
+    keywordController.show)
 
-    app.delete('/vulnerabilities/:vulnerabilityId',
-    VulnerabilitiesController.delete)
+    app.put('/keyword/:keywordId', 
+    keywordController.put)
+
+    app.delete('/keyword/:keywordId',
+    keywordController.delete)
+
+    app.get('/cvss', 
+    CvssController.index)
 }

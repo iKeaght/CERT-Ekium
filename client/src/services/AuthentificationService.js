@@ -1,10 +1,10 @@
-import Api from '@/services/Api'
+import http from '../http-common'
 
 export default {
     register(credentials) {
-        return Api().post('register', credentials)
+        return http().post('register', credentials)
     },
     login(credentials) {
-        return Api().post('login', credentials)
+        return http().post('login', credentials)
     }
 }

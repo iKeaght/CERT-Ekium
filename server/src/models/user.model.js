@@ -1,5 +1,7 @@
 const Promise = require('bluebird');
-const Vulnerabilities = require('./Vulnerabilities');
+const keyword = require('./keyword.model');
+const user = require('./user.model');
+
 const bcrypt = Promise.promisifyAll(require('bcrypt'))
 
 
@@ -14,35 +16,27 @@ async function hashPassword(user) {
     return null;
 
 }
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize, Sequelize) => {
 
-    const User = sequelize.define('User', {
+    const User = sequelize.define('user', {
         email: {
-            type: DataTypes.STRING,
-            unique: true
+            type: Sequelize.STRING,
+            unique: true,
+            primaryKey: true
+
         },
-        password: DataTypes.STRING,
-    }, {
+        password: Sequelize.STRING,
+    },
+    {
         hooks: {
             beforeCreate: hashPassword,
-
         }
 
     })
-    User.associate = models => {
-        User.hasMany(models.Vulnerabilities, {
-            onDelete: "cascade"
-        })
-    }
-
 
 
     User.prototype.comparePassword = function comparePassword(password) {
         return bcrypt.compare(password, this.password)
     }
-    //User.hasMany(Vulnerabilities)
-    //Vulnerabilities.belongsTo(User)
-    
-
     return User
 }

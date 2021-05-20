@@ -10,7 +10,10 @@ const config = require('./config/config')
 const app = express()
 app.use(morgan('combined'))
 app.use(bodyParser.json())
-app.use(cors())
+var corsOptions = {
+    origin: "http://localhost:8080"
+  };
+app.use(cors(corsOptions))
 
 require('./routes')(app)
 

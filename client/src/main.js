@@ -9,6 +9,7 @@ import {sync} from 'vuex-router-sync'
 import store from '@/store/store'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+
 Vue.config.productionTip = false
 
 Vue.use(Vuetify, VueAxios, axios)
