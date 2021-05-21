@@ -25,7 +25,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr  v-for="kw in keyword " :key="kw.name"  v-if="user_mail === kw.user_email" class="black--text">
+      <tr  v-for="kw in keyword " :key="kw.name"  class="black--text">
         <td v-if= "!kw.hasbeenseen" >{{ kw.name }}</td>
         <td v-if= "kw.hasbeenseen" class= 'indigo--text'>{{ kw.name }}</td>
         <td> <v-btn
@@ -72,14 +72,19 @@ export default {
   data() {
     return {
       keyword: [],
-      user_mail: this.$store.state.user.email
+      user_mail: this.$store.state.user.email,
+          param: {
+        user_mail: ''
+    }
     }
   },
   methods: {
   },
   async mounted() {
     try {
-    this.keyword = (await KeywordService.index({
+    this.param.user_mail = this.$store.state.user.email
+    const param = this.param
+    this.keyword = (await KeywordService.index({param
     })).data
     } catch (err) {
       console.log(err)

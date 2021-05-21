@@ -1,6 +1,11 @@
 const { User } = require('../models')
+const { Keyword } = require('../models')
+
 const jwt = require('jsonwebtoken')
 const config = require('../config/config')
+
+User.hasMany(Keyword, {foreignKey: 'user_email'})
+Keyword.belongsTo(User, {foreignKey: 'user_email'})
 
 function jwtSignuser(user) {
     const ONE_WEEK = 60 * 60 * 24 * 7
@@ -54,5 +59,15 @@ module.exports = {
                 error: 'An error has occured trying to log in'
             })
         }
-    }
+    },
+    async show(req, res) {
+        try {
+            const user = await User.findByPk(req.params.usermail)
+            res.send(user)
+        } catch (err) {
+            res.status(500).send({
+                error: 'An error has occured trying to fetch the user'
+            })
+        }
+    },
 }

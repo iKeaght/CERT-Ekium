@@ -1,9 +1,9 @@
 import http from '../http-common'
 
 export default {
-  index({keyword}) {
+  index({param}) {
     return http().get('keyword', {
-        params: keyword
+        params: param
     })
 },
 post(keyword) {

@@ -1,4 +1,6 @@
+const cve_urls = require('./cve_urls.model');
 const cvss = require('./cvss.model');
+
 
 module.exports = (sequelize, Sequelize) => {
     const cvss = sequelize.define("cvss", {
@@ -28,6 +30,5 @@ module.exports = (sequelize, Sequelize) => {
     freezeTableName: true
     }
     );
-
     return cvss;
   };

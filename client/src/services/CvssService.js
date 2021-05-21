@@ -1,9 +1,9 @@
 import http from '../http-common'
 
 export default {
-    index({cvss}) {
+    index({param}) {
         return http().get('cvss', {
-            params: cvss
+            params: param
         })
     },
     post(cvss) {

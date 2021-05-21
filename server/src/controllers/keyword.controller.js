@@ -1,8 +1,19 @@
+const { User } = require('../models')
 const { Keyword } = require('../models')
+
+
+User.hasMany(Keyword, {foreignKey: 'user_email'})
+Keyword.belongsTo(User, {foreignKey: 'user_email'} )
+
 module.exports = {
     async index(req, res) {
         try {
-            const keyword = await Keyword.findAll({distinct: true })
+            console.log(req.query)
+            const keyword = await Keyword.findAll(
+                {distinct: true ,
+                where: {
+                    user_email: req.query.user_mail
+                }})
             res.send(keyword) 
         } catch (err) {
             res.status(500).send({
