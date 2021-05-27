@@ -1,6 +1,6 @@
 <template>
   <div>
-    <panel title="keyword Metadata">
+    <panel :title="'Edit ' + title">
       <v-text-field
         v-on:keyup.enter="savekeyword()"
         label="Title"
@@ -29,8 +29,8 @@ export default {
         title: null,
         hasbeenseen: false,
         user_email: this.$store.state.user.email
-
       },
+      title: '',
       error: null,
       required: (value) => !!value || 'Required'
     }
@@ -64,6 +64,7 @@ export default {
     try {
       const KeywordId = this.$store.state.route.params.KeywordId
       this.keyword = (await KeywordService.show(KeywordId)).data
+      this.title = (await KeywordService.show(KeywordId)).data.name
     } catch (err) {
       console.log(err)
     }

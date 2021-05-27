@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 module.exports ={
     port: process.env.PORT || 8081,
     authentification: {

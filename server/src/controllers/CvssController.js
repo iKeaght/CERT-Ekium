@@ -1,8 +1,4 @@
 const { Cvss, Keyword } = require('../models')
-const {Cve_urls} = require('../models')
-
-Cvss.hasMany(Cve_urls, {foreignKey: 'cve'})
-Cve_urls.belongsTo(Cvss, {foreignKey: 'cve'} )
 
 const { Op } = require("sequelize");
 
@@ -11,17 +7,17 @@ module.exports = {
         try {
             const cvss = await Cvss.findAll(
                 {
-                    include: [
-                    {model: Cve_urls,
-                    as: 'cve_urls'}
-                ],
+                attributes: ['cve','severity','description','published_date'],
+                group:['cve','severity','description','published_date'],
                 order: [[req.query.order, 'DESC']],
                 offset: req.query.offset,
+                limit: req.query.limit,
                 where: { [Op.and]: [
-                    {description: { [Op.iLike]:  '%'+req.query.keyword+'%'}},
-                    {published_date: { [Op.gt]:  req.query.publication_date}},
                     {severity: { [Op.iLike]:  '%'+req.query.severity+'%'}},
-                    //{cve_urls.url: { [Op.iLike]:  '%'+req.query.keyword+'%'}}
+                    {published_date: { [Op.gt]:  req.query.publication_date}},
+                    {[Op.or]: [
+                    {description: { [Op.iLike]:  '%'+req.query.keyword+'%'}},
+                    {url: { [Op.iLike]:  '%'+req.query.keyword+'%'}}]}
                 ]},
             }
                 )
@@ -32,4 +28,26 @@ module.exports = {
             })
         }
     },
+    async count(req, res) {
+        try {
+            const count = await Cvss.findAll(
+                {
+                attributes: ['cve'],
+                group:['cve'],
+                where: { [Op.and]: [
+                    {severity: { [Op.iLike]:  '%'+req.query.severity+'%'}},
+                    {published_date: { [Op.gt]:  req.query.publication_date}},
+                    {[Op.or]: [
+                    {description: { [Op.iLike]:  '%'+req.query.keyword+'%'}},
+                    {url: { [Op.iLike]:  '%'+req.query.keyword+'%'}}]}
+                ]},
+            }
+                )
+            res.send(count) 
+        } catch (err) {
+            res.status(500).send({
+                error: 'An error has occured trying to fetch the vulnerabilities'
+            })
+        }
+    }
 }

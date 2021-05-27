@@ -40,6 +40,7 @@ import KeywordService from '@/services/KeywordService'
   export default {
     data () {
       return {
+      error: false,
       keyword: {
           name: null,
           user_email: this.$store.state.user.email
@@ -51,17 +52,20 @@ import KeywordService from '@/services/KeywordService'
       }
     },
     methods: {
-    createKeywords(title) {
-      this.error = null
-      if (title.length) {
-        for (var i = 0; i < title.length; i++) {
-          this.keyword.name = title[i]
-          KeywordService.post(this.keyword)
+    async createKeywords(title) {
+      try {
+        this.error = null
+        if (title.length) {
+          for (var i = 0; i < title.length; i++) {
+            this.keyword.name = title[i]
+            KeywordService.post(this.keyword)
+          }
+          this.$router.push({ name: 'Keywords' })
+        } else {
+          console.log('fill in the blanks')
         }
-        this.$router.push({
-        name: 'Keywords' })
-      } else {
-        console.log('fill in the blanks')
+      } catch (error) {
+        this.error = true
       }
     }
   }

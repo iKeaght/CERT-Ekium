@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const { User } = require('../models')
 const { Keyword } = require('../models')
 
@@ -8,7 +9,6 @@ Keyword.belongsTo(User, {foreignKey: 'user_email'} )
 module.exports = {
     async index(req, res) {
         try {
-            console.log(req.query)
             const keyword = await Keyword.findAll(
                 {distinct: true ,
                 where: {

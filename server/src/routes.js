@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const AuthentificationController = require('./controllers/AuthentificationController')
 const keywordController = require('./controllers/keyword.controller')
 const keywordcontroller = require('./controllers/keyword.controller')
@@ -30,4 +31,7 @@ module.exports = (app) => {
 
     app.get('/cvss', 
     CvssController.index)
+
+    app.get('/cvss_count', 
+    CvssController.count)
 }

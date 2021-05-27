@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 module.exports ={
     HOST: process.env.HOST || 'localhost',
     USER: process.env.DB_USER || 'postgres',

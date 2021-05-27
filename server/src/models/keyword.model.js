@@ -11,7 +11,13 @@ module.exports = (sequelize, Sequelize) => {
       },
     },
     {
-    freezeTableName: true
+    freezeTableName: true,
+    indexes: [
+      {
+        unique: true,
+        fields: ['user_email', 'name']
+      }
+    ]
     }
     );
 

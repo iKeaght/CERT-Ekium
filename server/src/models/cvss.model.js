@@ -1,4 +1,3 @@
-const cve_urls = require('./cve_urls.model');
 const cvss = require('./cvss.model');
 
 
@@ -6,8 +5,8 @@ module.exports = (sequelize, Sequelize) => {
     const cvss = sequelize.define("cvss", {
       cve: {
         type: Sequelize.CHAR(20),
-        primaryKey: true,
-        AllowNull: false
+        AllowNull: false,
+        primarykey: true
       },
       severity: {
         type: Sequelize.CHAR(10)
@@ -21,6 +20,10 @@ module.exports = (sequelize, Sequelize) => {
       last_modified_date: {
         type: Sequelize.DATEONLY
       },
+      url: {
+        type: Sequelize.TEXT,
+        primarykey: true
+      }
       
 
     },

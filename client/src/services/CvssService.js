@@ -6,6 +6,11 @@ export default {
             params: param
         })
     },
+    count({param}) {
+        return http().get('cvss_count', {
+            params: param
+        })
+    },
     post(cvss) {
         return http().post('cvss', cvss)
     },

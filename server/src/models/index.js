@@ -25,7 +25,6 @@ db.sequelize = sequelize;
 db.Keyword = require("./keyword.model.js")(sequelize, Sequelize);
 db.User = require("./user.model.js")(sequelize, Sequelize);
 db.Cvss = require("./cvss.model.js")(sequelize, Sequelize)
-db.Cve_urls = require("./cve_urls.model.js")(sequelize, Sequelize)
 
 
 module.exports = db;
