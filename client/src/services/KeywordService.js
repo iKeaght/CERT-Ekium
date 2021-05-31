@@ -6,6 +6,11 @@ export default {
         params: param
     })
 },
+index_add({param}) {
+    return http().get('keyword_add', {
+        params: param
+    })
+},
 post(keyword) {
     return http().post('keyword', keyword)
 },

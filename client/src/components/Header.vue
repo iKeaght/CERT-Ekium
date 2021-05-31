@@ -52,8 +52,14 @@
 </template>
 
 <script>
+
 export default {
+
   name: 'Header',
+  data() {
+    return {
+    }
+},
   methods: {
     logout() {
       this.$store.dispatch('setToken', null)

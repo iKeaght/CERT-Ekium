@@ -11,6 +11,8 @@ import About from '@/components/About'
 import Search from '@/components/Search'
 import DeleteKeyword from '@/components/DeleteKeyword'
 import Home from '@/components/Home'
+import Admin from '@/components/Admin'
+
 Vue.use(Router)
 
 export default new Router({
@@ -19,6 +21,11 @@ export default new Router({
       path: '/home',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: Admin
     },
     {
       path: '/register',

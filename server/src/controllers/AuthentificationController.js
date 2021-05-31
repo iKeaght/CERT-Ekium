@@ -62,7 +62,7 @@ module.exports = {
     },
     async show(req, res) {
         try {
-            const user = await User.findByPk(req.params.usermail)
+            const user = await User.findByPk(req.params.useremail)
             res.send(user)
         } catch (err) {
             res.status(500).send({

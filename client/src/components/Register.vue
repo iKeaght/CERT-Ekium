@@ -11,7 +11,6 @@
       </v-card-text>
 </panel>
 </template>
-
 <script>
 import AuthentificationService from '@/services/AuthentificationService'
 import Panel from '@/components/Panel'
@@ -24,7 +23,6 @@ export default {
     }
   },
   methods: {
-    // ne pas oublier le catch and try sinon message d'erreur
     async register() {
       try {
         const response = await AuthentificationService.register({
@@ -42,9 +40,7 @@ export default {
     }
   },
   components: {
-    Panel
-
-  }
+    Panel }
 }
 </script>
 <style scoped>

@@ -14,11 +14,17 @@ module.exports = (app) => {
     app.post('/login', 
     AuthentificationController.login)
 
+    app.get('/user/:useremail',
+    AuthentificationController.show)
+
     app.post('/keyword',
     keywordcontroller.post)
 
     app.get('/keyword', 
     keywordcontroller.index)
+
+    app.get('/keyword_add', 
+    keywordcontroller.index_add)
 
     app.get('/keyword/:keywordId', 
     keywordController.show)

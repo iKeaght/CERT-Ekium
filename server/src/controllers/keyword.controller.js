@@ -21,6 +21,21 @@ module.exports = {
             })
         }
     },
+    async index_add(req, res) {
+        try {
+            const keyword = await Keyword.findAll(
+                {attributes: ['name'],
+                distinct: true ,
+                where: {
+                    user_email: 'keyword@gmail.com'
+                }})
+            res.send(keyword) 
+        } catch (err) {
+            res.status(500).send({
+                error: 'An error has occured trying to fetch the vulnerabilities'
+            })
+        }
+    },
     async show(req, res) {
         try {
             const keyword = await Keyword.findByPk(req.params.keywordId)

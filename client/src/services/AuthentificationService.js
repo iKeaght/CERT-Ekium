@@ -6,5 +6,8 @@ export default {
     },
     login(credentials) {
         return http().post('login', credentials)
+    },
+    show(useremail) {
+        return http().get(`user/${useremail}`)
     }
 }

@@ -69,11 +69,11 @@
         <td> {{cvss.cve}} </td>
         <td> {{cvss.severity}} <br>
         <img :src="require('@/assets/low.png')" alt="low" height="40" width="40" v-if= "cvss.severity === 'LOW       '">
-        <img :src="require('@/assets/high.png')" alt="low" height="40" width="40" v-if= "cvss.severity === 'HIGH      '">
-        <img :src="require('@/assets/medium.png')" alt="low" height="40" width="40" v-if= "cvss.severity === 'MEDIUM    '">
-        </td>
+        <img :src="require('@/assets/high.png')" alt="high" height="40" width="40" v-if= "cvss.severity === 'HIGH      '">
+        <img :src="require('@/assets/medium.png')" alt="medium" height="40" width="40" v-if= "cvss.severity === 'MEDIUM    '"></td>
         <td> {{cvss.description}} </td>
         <td> {{cvss.published_date}} </td>
+
         <td> <a @click="goToExternalPage_CVE(cvss.cve)"> <v-icon> open_in_new </v-icon> </a> </td>
       </tr>
     </tbody>
@@ -120,6 +120,7 @@ export default {
       keyword: {
         name: null
       },
+      totalresults: '0',
       constadd: 25,
       pubyear: 0,
       pubmonth: 3,
@@ -147,7 +148,9 @@ export default {
     ).data
     this.param.keyword = Keyword.name
     const param = this.param
+
     this.cvss_list = (await CvssService.index({param})).data
+
     this.totalresults = (await CvssService.count({param})).data.length
     this.loading = false
     this.loading2 = false

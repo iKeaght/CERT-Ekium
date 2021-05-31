@@ -26,7 +26,9 @@ module.exports = (sequelize, Sequelize) => {
 
         },
         password: Sequelize.STRING,
+        admin: Sequelize.BOOLEAN
     },
+
     {
         hooks: {
             beforeCreate: hashPassword,

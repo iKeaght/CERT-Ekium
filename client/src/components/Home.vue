@@ -1,6 +1,6 @@
 <template>
 <div>
-
+  <div v-if="isuseradmin"> <br>  <v-btn router to="admin"> You are connected as an administrator, press the button to access to administration page</v-btn> </div>
   <br>
   <br>
       <h1> Welcome to Ekium's CERT </h1> <br>
@@ -25,17 +25,24 @@
 <h3 class="black--text font-weight-medium"> If you don't already have an account, you can also search vulnerabilities for different softwares by using the SEARCH button</h3>
 <br> <br><br> <br>
 
-  </div>
-
+</div>
 </template>
 
 <script>
-import Panel from '@/components/Panel.vue'
 export default {
-  components: { Panel },
+  data() {
+    return {
+      isuseradmin: false
+    }
+  },
 methods: {
-}
-}
+},
+  async mounted() {
+    if (this.$store.state.isUserLoggedIn) {
+      this.isuseradmin = this.$store.state.user.admin
+      }
+  }
+  }
 
 </script>
 

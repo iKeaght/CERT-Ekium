@@ -26,34 +26,33 @@
     </thead>
     <tbody>
       <tr  v-for="kw in keyword " :key="kw.name"  class="black--text">
-        <td v-if= "!kw.hasbeenseen" >{{ kw.name }}</td>
-        <td v-if= "kw.hasbeenseen" class= 'indigo--text'>{{ kw.name }}</td>
+        <td>{{ kw.name }}</td>
         <td> <v-btn
-            dark
-            class="grey"
+            light
+            color="white"
             :to="{
               name: 'KeywordId',
               params: { KeywordId: kw.id },
             }"
-          ><v-icon color="black">remove_red_eye</v-icon>
+          ><v-icon color="#2C9DBD">remove_red_eye</v-icon>
            </v-btn></td>
           <td><v-btn
-            dark
-            class="grey"
+            light
+            color="white"
             :to="{
               name: 'KeywordEdit',
               params: { KeywordId: kw.id },
             }"
-            ><v-icon color="black">edit</v-icon></v-btn
+            ><v-icon color="#2C9DBD">edit</v-icon></v-btn
           ></td>
           <td><v-btn
-            dark
-            class="grey"
+            light
+            color="white"
             :to="{
               name: 'KeywordDelete',
               params: { KeywordId: kw.id },
             }"
-            ><v-icon color="black">delete</v-icon></v-btn
+            ><v-icon color="#2C9DBD">delete</v-icon></v-btn
           ></td>
       </tr>
     </tbody>

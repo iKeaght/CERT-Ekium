@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 const dbConfig = require("../config/db.config.js");
 
 const Keyword = require('./keyword.model');
