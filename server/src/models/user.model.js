@@ -25,6 +25,8 @@ module.exports = (sequelize, Sequelize) => {
             primaryKey: true
 
         },
+        firstname: Sequelize.STRING,
+        lastname: Sequelize.STRING, 
         password: Sequelize.STRING,
         admin: Sequelize.BOOLEAN
     },

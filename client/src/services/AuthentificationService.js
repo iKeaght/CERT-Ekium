@@ -9,5 +9,9 @@ export default {
     },
     show(useremail) {
         return http().get(`user/${useremail}`)
+    },
+    index() {
+        return http().get('user', {
+        })
     }
 }

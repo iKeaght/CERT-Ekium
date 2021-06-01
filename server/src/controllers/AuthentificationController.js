@@ -70,4 +70,14 @@ module.exports = {
             })
         }
     },
+    async index(req, res) {
+        try {
+            const user = await User.findAll()
+            res.send(user)
+        } catch (err) {
+            res.status(500).send({
+                error: 'An error has occured trying to fetch the users'
+            })
+        }
+    },
 }

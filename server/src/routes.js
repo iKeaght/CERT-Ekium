@@ -3,6 +3,8 @@ const AuthentificationController = require('./controllers/AuthentificationContro
 const keywordController = require('./controllers/keyword.controller')
 const keywordcontroller = require('./controllers/keyword.controller')
 const CvssController = require('./controllers/CvssController')
+const CompanyController = require('./controllers/CompanyController')
+
 
 const AuthentificationControllerPolicy = require('./policies/AuthentificationControllerPolicy')
 
@@ -16,6 +18,9 @@ module.exports = (app) => {
 
     app.get('/user/:useremail',
     AuthentificationController.show)
+
+    app.get('/user',
+    AuthentificationController.index)
 
     app.post('/keyword',
     keywordcontroller.post)
@@ -40,4 +45,10 @@ module.exports = (app) => {
 
     app.get('/cvss_count', 
     CvssController.count)
+
+    app.post('/company',
+    CompanyController.post)
+
+    app.get('/company',
+    CompanyController.index)
 }
